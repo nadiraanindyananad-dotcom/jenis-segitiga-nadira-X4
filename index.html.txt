@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengecek Jenis Segitiga</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fee2e2;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #ef4444;
+        }
+
+        h1 {
+            color: #dc2626;
+        }
+
+        input {
+            display: block;
+            width: 85%;
+            margin: 10px auto;
+            padding: 12px;
+            border: 1px solid #f87171;
+            border-radius: 7px;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: #dc2626;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        #hasil {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #b91c1c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>🔴 Pengecek Segitiga</h1>
+
+    <p>Masukkan nilai sisi segitiga</p>
+
+    <input type="number" id="a" placeholder="Panjang sisi A">
+    <input type="number" id="b" placeholder="Panjang sisi B">
+    <input type="number" id="c" placeholder="Panjang sisi C">
+
+    <button onclick="cekSegitiga()">Cek Sekarang</button>
+
+    <div id="hasil"></div>
+
+</div>
+
+<script>
+
+function cekSegitiga() {
+
+    const a = Number(document.getElementById("a").value);
+    const b = Number(document.getElementById("b").value);
+    const c = Number(document.getElementById("c").value);
+
+    const hasil = document.getElementById("hasil");
+
+    if (!a || !b || !c) {
+        hasil.innerHTML = "⚠️ Data belum lengkap!";
+        return;
+    }
+
+    if (a + b <= c || a + c <= b || b + c <= a) {
+        hasil.innerHTML = "❌ Sisi tidak dapat membentuk segitiga.";
+        return;
+    }
+
+    if (
+        a ** 2 + b ** 2 === c ** 2 ||
+        a ** 2 + c ** 2 === b ** 2 ||
+        b ** 2 + c ** 2 === a ** 2
+    ) {
+        hasil.innerHTML = "📐 Jenis: Segitiga Siku-Siku";
+    }
+
+    else if (a === b || a === c || b === c) {
+        hasil.innerHTML = "🔺 Jenis: Segitiga Sama Kaki";
+    }
+
+    else {
+        hasil.innerHTML = "🔻 Jenis: Segitiga Sembarang";
+    }
+}
+
+</script>
+
+</body>
+</html>
